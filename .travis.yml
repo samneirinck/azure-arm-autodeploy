@@ -8,4 +8,4 @@ before_install:
   - docker pull microsoft/azure-cli:2.0.31
 
 script:
-  - docker run microsoft/azure-cli /bin/bash -c "az login"
+  - docker run -e AZURE_SERVICEPRINCPIAL_KEY -e AZURE_SERVICEPRINCPIAL_ID -e AZURE_TENANTID microsoft/azure-cli:2.0.31 /bin/bash -c "az login --service-principal -u $AZURE_SERVICEPRINCPIAL_ID -p $AZURE_SERVICEPRINCPIAL_KEY --tenant $AZURE_TENANTID;az group list"
