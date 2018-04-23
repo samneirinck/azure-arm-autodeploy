@@ -6,3 +6,6 @@ services:
 
 before_install:
   - docker pull microsoft/azure-cli:2.0.31
+
+script:
+  - docker run microsoft/azure-cli /bin/bash -c "az login"
